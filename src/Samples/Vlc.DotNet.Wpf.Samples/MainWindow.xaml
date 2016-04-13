@@ -15,14 +15,42 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <wpf:VlcControl Grid.Row="0" x:Name="myControl"/>
 
-        <Button Grid.Row="1" Click="OnPlayButtonClick">Play</Button>
-        <Button Grid.Row="2" Click="OnForwardButtonClick" x:Name="Forward">Forward</Button>
-        <Button Grid.Row="3" Click="GetLength_Click" x:Name="GetLength">Get Length</Button>
-        <Button Grid.Row="4" Click="GetCurrentTime_Click" x:Name="GetCurrentTime">Get Current Time</Button>
-        <Button Grid.Row="5" Click="SetCurrentTime_Click" x:Name="SetCurrentTime">Set Current Time to 5s</Button>
+        <Border Grid.Row="1" Background="Black">
+            <TextBlock Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="White" Name="CurrentTime" Margin="5" FontWeight="Bold">00:00</TextBlock>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock>URL:</TextBlock>
+            <TextBox Name="MediaUrl" Grid.Column="1" Text="http://10.5.7.207/userapi/streams/27/mpd"/>
+            <Button Grid.Column="2" Click="OnLoadButtonClicked">Load</Button>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>            
+
+            <Button Click="OnPlayButtonClick" Grid.Column="0" Padding="8,3">Play</Button>
+            <Button Click="OnPauseButtonClick" Grid.Column="1" Padding="8,3">Pause</Button>
+            <ScrollBar Name="SeekBar" Grid.Column="2" Orientation="Horizontal" Minimum="0" Maximum="1" Scroll="SeekBar_Scroll"  />
+        </Grid>
+        <Button Grid.Row="4" Click="OnForwardButtonClick" x:Name="Forward">Forward</Button>
+        <Button Grid.Row="5" Click="GetLength_Click" x:Name="GetLength">Get Length</Button>
+        <Button Grid.Row="6" Click="GetCurrentTime_Click" x:Name="GetCurrentTime">Get Current Time</Button>
+        <Button Grid.Row="7" Click="SetCurrentTime_Click" x:Name="SetCurrentTime">Set Current Time to 5s</Button>
     </Grid>
 </Window>

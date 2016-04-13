@@ -168,6 +168,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_chapter.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_hwnd.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_media.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_pause.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_position.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_rate.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_time.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="VlcManager.SetMediaToMediaPlayer.cs" />
     <Compile Include="VlcManager.SetMute.cs" />
     <Compile Include="VlcManager.SetNextMediaChapter.cs" />
+    <Compile Include="VlcManager.SetPause.cs" />
     <Compile Include="VlcManager.SetPreviousMediaChapter.cs" />
     <Compile Include="VlcManager.SetRate.cs" />
     <Compile Include="VlcManager.SetTime.cs" />

@@ -1,0 +1,416 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogProvider</name>
+    </assembly>
+    <members>
+        <member name="M:LogProvider.ExtensibleTarget.DropLogHandlers(LogProvider.LoggingLevel)">
+            <summary>
+            Removes handlers
+            </summary>
+            <param name="minLevel">All handlers of <see cref="T:LogProvider.LoggingLevel"/> that is higher to specified will be dropped</param>
+        </member>
+        <member name="M:LogProvider.LoggerConfiguration.FindSettingKey(System.String)">
+            <summary>
+            Attempts to find specified key in settings
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.LoggerConfiguration.GetAppIdentity">
+            <summary>
+            Gets calling application identity
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.LoggerConfiguration.GetAssemblyName">
+            <summary>
+            Gets calling Assembly name without version, public key token and culture
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.LoggerConfiguration.GetMachineId">
+            <summary>
+            Gets current machine identity, that may be:
+            1. ComputerId (if specified)
+            or
+            2. Self Ip-Address (if it is possible to determine it)
+            or
+            3. Current Machine Name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.LoggerConfiguration.FindSelfIp">
+            <summary>
+            Finds Self Ip-Address
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.LoggerConfiguration.FindValidAdress(System.Collections.Generic.List{System.String})">
+            <summary>
+            Chooses one of given ip addresses. Address in the subnet with the remote logger host is considered valid.
+            </summary>
+            <param name="addresses"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LogProvider.LoggerConfiguration.Xmlns">
+            <summary>
+            Gets the XML namespace of this Configuration Section.
+            </summary>
+            <remarks>
+            This property makes sure that if the configuration file contains the XML namespace,
+            the parser doesn't throw an exception because it encounters the unknown "xmlns" attribute.
+            </remarks>
+        </member>
+        <member name="P:LogProvider.LoggerConfiguration.Settings">
+            <summary>
+            Gets or sets the Loggers.
+            </summary>
+        </member>
+        <member name="P:LogProvider.LoggerConfiguration.CheckSystemResourcesPeriod">
+            <summary>
+            Config key: CheckSystemResourcesPeriodMins
+            </summary>
+        </member>
+        <member name="T:LogProvider.ModelMemoryTarget">
+            <summary>
+            Acts similar to <see cref="T:NLog.Targets.MemoryTarget"/>, but lists logs as Model layer classes objects, not strings
+            </summary>
+        </member>
+        <member name="M:LogProvider.Model.LogParser.setExceptionDefaultMessage(LogProvider.Model.LogMessage)">
+            <summary>
+            Sets LogException.Type to LogMessage.Message if last is not set
+            </summary>
+            <param name="res"></param>
+        </member>
+        <member name="M:LogProvider.NLogProvider.CreateInstance(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="logToMemory">True - logging to <see cref="P:LogProvider.NLogProvider.MemoryTarget"/> instead of <see cref="P:LogProvider.NLogProvider.FileTarget"/></param>
+        </member>
+        <member name="M:LogProvider.NLogProvider.CreateInstance(LogProvider.Services.SystemInfoWatcher.SystemInfoWatcherFactory,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="systemInfoWatcherFactory"></param>
+            <param name="logToMemory">True - logging to <see cref="P:LogProvider.NLogProvider.MemoryTarget"/> instead of <see cref="P:LogProvider.NLogProvider.FileTarget"/></param>
+        </member>
+        <member name="M:LogProvider.NLogProvider.ShouldLog(System.String,LogProvider.LoggingLevel,System.UInt32)">
+            <summary>
+            Checks whether current log should be written to log file
+            </summary>
+            <param name="message"></param>
+            <param name="level"></param>
+            <param name="logEvery"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.IsEmpty(LogProvider.ProcessInfo.ProcessInfo)">
+            <summary>
+            Checks whether ProcessInfo object is empty. Empty ProcessInfo objects appear as a result of search by name-id for non-existent
+            ProcessInfo objects in order for consumer application not to check search result for null reference
+            </summary>
+            <param name="procInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.GetActiveStages">
+            <summary>
+            Returns <see cref="T:LogProvider.ProcessInfo.ProcessStage"/> objects that are in progress within current <see cref="T:LogProvider.ProcessInfo.ProcessInfo"/> object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.#ctor(System.Boolean)">
+            <summary>
+            Creates new ProcessInfo object
+            </summary>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates new ProcessInfo object
+            </summary>
+            <param name="processName">Name of the process used to group ProcessInfo objects</param>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates new ProcessInfo object
+            </summary>
+            <param name="processName">Name of the process used to group ProcessInfo objects</param>
+            <param name="processId">Id of the process used to identify ProcessInfo object among objects with the same Name</param>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.StartNewStage">
+            <summary>
+            Creates new ProcessStage object, starts its progress and adds it to current ProcessInfo object
+            </summary>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.StartNewStage(System.String)">
+            <summary>
+            Creates new ProcessStage object with specific name, starts its progress and adds it to current ProcessInfo object.
+            Note that ProcessInfo object cannot contain 2 id-less ProcessStage objects with same names.
+            </summary>
+            <param name="name">String identifier of ProcessStage object within current ProcessInfo object</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.FinishStage">
+            <summary>
+            Finishes stage that is currentrly in progress within current ProcessInfo object
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.FinishStage(LogProvider.ProcessInfo.ProcessStage)">
+            <summary>
+            Finishes specific stage that is running within current ProcessInfo object
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.FinishStage(System.String)">
+            <summary>
+            Finishes stage with specified name that is running within current ProcessInfo object
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.FinishProcess(System.Boolean,System.Boolean)">
+            <summary>
+            Finishes current ProcessInfo object by setting its IsFinished property to true and adds itself to ProcessStatistics
+            by default
+            </summary>
+            <param name="log">Logs process with its duration</param>
+            <param name="addToStatistics">True to add current ProcessInfo object to ProcessStatistics or False to omit saving statistics</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessInfo.Throw(System.Exception)">
+            <summary>
+            Throws specified exception unless <see cref="P:LogProvider.LoggerConfiguration.ThrowOnError"/> is set to False.
+            If this is the case method just logs exception message with <see cref="F:LogProvider.LoggingLevel.Debug"/> level.
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessInfo.Name">
+            <summary>
+            Gets ProcessName property value used to group ProcessInfo objects
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessInfo.Id">
+            <summary>
+            Gets ProcessId property value used to identify ProcessInfo object among objects with the same Name
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessInfo.ProcessStages">
+            <summary>
+            Gets ProcessStages within current ProcessInfo object
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessInfo.IsFinished">
+            <summary>
+            Gets IsFinished property value indicating whether current ProcessInfo object has finished. 
+            Finished ProcessInfo objects cannot start new stages.
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessInfo.StartTime">
+            <summary>
+            Gets start time of the first ProcessStage object within current ProcessInfo object
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessInfo.EndTime">
+            <summary>
+            Gets end time of the last ProcessStage object within current ProcessInfo object
+            </summary>
+        </member>
+        <member name="F:LogProvider.ProcessInfo.RandomVariableSet.stdDev">
+            <summary>
+            Standard Deviation
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.ProcessName">
+            <summary>
+            Gets ProcessName of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.ProcessInstancesCount">
+            <summary>
+            Gets number of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.AverageDuration">
+            <summary>
+            Gets average duration of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.DurationStandardDeviation">
+            <summary>
+            Gets standard deviation of duration of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.MinDuration">
+            <summary>
+            Gets minimum duration of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.MaxDuration">
+            <summary>
+            Gets maximum duration of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.FirstProcessStart">
+            <summary>
+            Gets the StartTime of the first of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.LastProcessEnd">
+            <summary>
+            Gets the EndTime of the last of ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessGroupStatistics.StageStatistics">
+            <summary>
+            Gets ProcessStageStatistics objects for each ProcessStage object in ProcessInfo objects that current ProcessGroupStatistics object is associated with
+            </summary>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessStage.IsEmpty(LogProvider.ProcessInfo.ProcessStage)">
+            <summary>
+            Checks whether ProcessStage object is empty. Empty ProcessStage objects occur within empty ProcessInfo objects
+            </summary>
+            <param name="stage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessStage.Finish">
+            <summary>
+            Finishes stage by specifying its EndTime value
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStage.Index">
+            <summary>
+            Index of Stage in Process
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStageStatistics.StageName">
+            <summary>
+            Gets the Name of ProcessStage objects that current ProcessStageStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStageStatistics.StagesCount">
+            <summary>
+            Gets number of ProcessStage objects that current ProcessStageStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStageStatistics.AverageDuration">
+            <summary>
+            Gets average duration of ProcessStage objects that current ProcessStageStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStageStatistics.DurationStandardDeviation">
+            <summary>
+            Gets standard deviation of duration of ProcessStage objects that current ProcessStageStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStageStatistics.MinDuration">
+            <summary>
+            Gets minimum duration of ProcessStage objects that current ProcessStageStatistics object is associated with
+            </summary>
+        </member>
+        <member name="P:LogProvider.ProcessInfo.ProcessStageStatistics.MaxDuration">
+            <summary>
+            Gets maximum duration of ProcessStage objects that current ProcessStageStatistics object is associated with
+            </summary>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessStatistics.FindActiveProcess(System.String,System.String)">
+            <summary>
+            Returns incomplete ProcessInfo object with specified name and id or null reference if no such object was found
+            </summary>
+            <param name="name">Name of active ProcessInfo object</param>
+            <param name="id">Id of active ProcessInfo object</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessStatistics.SetTrackedProcessesCount(System.Int32)">
+            <summary>
+            Sets maximum number of active (i.e. incomplete) ProcessInfo objects that are automatically stored in ProcessStatistics.
+            These ProcessInfo objects can be retrieved by name-id pair using ProcessStatistics.FindActiveProcess() method. 
+            This only refers to ProcessInfo objects that were created with non-empty name and id.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LogProvider.ProcessInfo.ProcessStatistics.Throw(System.Exception)">
+            <summary>
+            Throws specified exception unless <see cref="P:LogProvider.LoggerConfiguration.ThrowOnError"/> is set to False.
+            If this is the case method just logs exception message with <see cref="F:LogProvider.LoggingLevel.Debug"/> level.
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="T:LogProvider.Services.Threading.IAsyncEventSource">
+            <summary>
+            Provides abstraction for object that perform tasks asynchronously
+            </summary>
+        </member>
+        <member name="M:LogProvider.Services.Threading.IAsyncEventSource.SetAsyncEventCallback(System.Action)">
+            <summary>
+            Sets handler for async events
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:LogProvider.Services.Threading.IAsyncEventSource.Start(System.TimeSpan)">
+            <summary>
+            Starts async operation that invokes events periodically
+            </summary>
+            <param name="period">Async events invoke period</param>
+        </member>
+        <member name="M:LogProvider.Services.Threading.IAsyncEventSource.Stop">
+            <summary>
+            Stops async operation
+            </summary>
+        </member>
+        <member name="P:LogProvider.Services.Threading.IAsyncEventSource.IsStarted">
+            <summary>
+            Indicates async operation is started
+            </summary>
+        </member>
+        <member name="T:LogProvider.Services.Threading.TimerEventSource">
+            <summary>
+            Timer-implementation for <see cref="T:LogProvider.Services.Threading.IAsyncEventSource"/>
+            </summary>
+        </member>
+        <member name="M:LogProvider.View.LogMessageTemplateSelector.AddTemplate``1(System.Windows.DataTemplate)">
+            <summary>
+            Adds template for specified item type. Use to specify <see cref="T:System.Windows.DataTemplate"/>
+            for items of types defferent from <see cref="T:LogProvider.Model.LogMessage"/> and
+            <see cref="T:LogProvider.Model.LogException"/>
+            </summary>
+            <typeparam name="TItem"></typeparam>
+            <param name="template"></param>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

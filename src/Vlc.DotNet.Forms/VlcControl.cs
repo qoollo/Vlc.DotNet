@@ -165,6 +165,15 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        public void Resume()
+        {
+            //EndInit();
+            if (myVlcMediaPlayer != null)
+            {
+                myVlcMediaPlayer.Resume();
+            }
+        }
+
         public void Stop()
         {
             //EndInit();

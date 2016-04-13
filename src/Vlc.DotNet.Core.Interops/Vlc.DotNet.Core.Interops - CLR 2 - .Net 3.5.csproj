@@ -156,6 +156,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_new_from_media.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_next_chapter.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_next_frame.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_pause.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_pause.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_play.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_previous_chapter.cs" />
@@ -277,6 +278,7 @@
     <Compile Include="VlcManager.NextFrame.cs" />
     <Compile Include="VlcManager.ParseMedia.cs" />
     <Compile Include="VlcManager.ParseMediaAsync.cs" />
+    <Compile Include="VlcManager.SetPause.cs" />
     <Compile Include="VlcManager.Pause.cs" />
     <Compile Include="VlcManager.Play.cs" />
     <Compile Include="VlcManager.ReleaseAudioOutputDescription.cs" />

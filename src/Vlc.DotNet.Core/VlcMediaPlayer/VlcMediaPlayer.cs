@@ -173,6 +173,11 @@ namespace Vlc.DotNet.Core
             Manager.Pause(myMediaPlayerInstance);
         }
 
+        public void Resume()
+        {
+            Manager.Resume(myMediaPlayerInstance);
+        }
+
         public void Stop()
         {
             Manager.Stop(myMediaPlayerInstance);
